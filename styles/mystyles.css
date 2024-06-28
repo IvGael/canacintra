@@ -1,17 +1,18 @@
 /* styles/mystyles.css */
 
-/* General Styles */
+/* Estilos generales */
 body {
     font-family: 'Rubik', sans-serif;
 }
 
+/* Estilos de la navbar */
 /* Jumbotron Styles */
 
 .display-4{
     font-size: 80px;
 }
 .jumbotron {
-    height:530px;
+    height:620px;
     margin-bottom: 0;
     color: white;
     text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.5);
@@ -28,56 +29,71 @@ body {
 }
 
 .display-4{
-    padding-top: 90px;
+    padding-top: 120px;
 }
 
 .mt-4{
-    padding: 10px;
+    padding-top: 70px;
 }
 
-
-.section-highlight {
-    padding-top: 20px;
-    background-color: #de4040;
-    color: white;
-}
-
-.section-highlight1{
-    padding: 20px;
-    background-color: #ffffff;
-}
-
-.col-md-12{
-    padding-top: 30px;
-}
-
-.mt-4{
-    padding-top: 50px;
-}
-
-.section-content {
-    padding: 30px;
-}
-
-/* Navbar Styles */
 .navbar {
-    height: 90px;
-    background-color: #194788;
+    transition: all 0.3s;
 }
 
-.navbar-brand, .nav-link {
-    color: white !important;
+.navbar-shrink {
+    background-color: #194788 !important; /* Color de fondo de la navbar encogida */
+    padding: 10px 20px; /* Reducción del padding */
 }
 
-.nav-link:hover {
-    color: #ffcccb !important;
-}
-.nav-link {
-    padding-right: 20px !important;
+.navbar-dark .navbar-nav .nav-link {
+    color: rgba(255, 255, 255, 0.7);
 }
 
-/* Footer Styles */
+.navbar-dark .navbar-nav .nav-link:hover {
+    color: rgba(255, 255, 255, 1);
+}
+
+/* Sección destacada 1 */
+.section-highlight1 {
+    background-color: #ffffff;
+    padding: 60px 0;
+}
+
+.section-highlight1 h2 {
+    font-weight: 700;
+    margin-bottom: 20px;
+}
+
+.section-highlight1 p {
+    font-size: 18px;
+}
+
+.section-highlight1 .row .col-md-4 {
+    margin-bottom: 30px;
+}
+
+/* Sección destacada */
+.section-highlight {
+    background-color: #de4040;
+    padding: 60px 0;
+}
+
+.section-highlight h2 {
+    font-weight: 700;
+    margin-bottom: 20px;
+}
+
+.section-highlight p {
+    font-size: 18px;
+}
+
+/* Sección de noticias recientes */
+.section-highlight .card {
+    margin-bottom: 30px;
+}
+
+/* Footer */
 footer {
-    background-color: #c5c5e0;
+    background-color: #343a40;
     color: white;
 }
