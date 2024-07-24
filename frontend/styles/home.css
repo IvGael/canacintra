@@ -1,0 +1,201 @@
+@font-face {
+    font-family: 'Bahnschrift';
+    src: url('/frontend/fonts/Bahnschrift-Font-Family/BAHNSCHRIFT.TTF') format('truetype');
+}
+
+/* General Styles */
+body {
+    font-family: 'Bahnschrift', sans-serif;
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+/* Navbar Styles */
+.navbar {
+    height: 90px;
+    background-color: #0c2b4b;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 0 20px;
+}
+
+.navbar-brand, .nav-link {
+    color: white !important;
+    text-decoration: none;
+}
+
+.nav-link:hover {
+    color: #ffcccb !important;
+}
+
+/* Jumbotron Styles */
+.display-4 {
+    font-size: 3rem; /* Increase the size of the typed text */
+}
+
+.jumbotron {
+    height: 91vh;
+    margin-bottom: 0;
+    color: white;
+    text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.5);
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: flex-start; /* Align items to the left */
+    padding: 20px 180px; /* Add padding to the left */
+    position: relative;
+    text-align: left; /* Ensure text alignment to the left */
+}
+
+.jumbotron h1 {
+    font-size: 4rem; /* Increase the size of the main heading */
+}
+
+.jumbotron h2 {
+    font-size: 3rem; /* Increase the size of the subheading */
+}
+
+.jumbotron .btn {
+    background-color: #2d304e;
+    border: none;
+    padding: 15px 40px;
+    font-size: 20px;
+    margin-top: 20px;
+}
+
+.col-md-4 {
+    padding: 50px;
+    padding-top: 10px
+}
+
+#typed-text {
+    font-size: 3rem; /* Increase the size of the typed text */
+    font-weight: bold;
+}
+
+.countdown-bar {
+    background-color: #f8f9fa;
+    padding: 20px 0;
+    font-size: 1.2rem;
+}
+
+#countdown {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    font-size: 1.5rem;
+}
+
+.time-unit {
+    background: #fff;
+    border: 2px solid #0c2b4b;
+    border-radius: 10px;
+    padding: 10px 30px;
+    margin: 0 30px;
+    text-align: center;
+    color: #0c2b4b;
+}
+
+.time-unit span {
+    display: block;
+    font-size: 2rem;
+    font-weight: bold;
+}
+
+.time-unit .label {
+    font-size: 1rem;
+    font-weight: normal;
+    color: #555;
+}
+
+.section-highlight1 {
+    background-color: #ffffff;
+    padding: 20px;
+}
+.section-highlight1 h2 {
+    color: #0c2b4b;
+    font-size: 3rem
+}
+
+.section-highlight1 p2 {
+    font-size: 1.2rem
+}
+
+.section-highlight1 p {
+    font-size: 1rem
+}
+
+.section-highlight {
+    background-color: #295683;
+    color: white;
+}
+
+.col-md-12 {
+ 
+    padding-top: 50px
+}
+
+/* Footer Styles */
+footer {
+    background-color: #c5c5e0;
+    color: white;
+    padding: 20px;
+    text-align: center;
+}
+
+/* Responsiveness */
+@media (max-width: 768px) {
+    .display-4 {
+        font-size: 2rem; /* Adjust the size for smaller screens */
+    }
+
+    .jumbotron {
+        height: auto;
+        padding: 20px;
+    }
+
+    .jumbotron h1 {
+        font-size: 2.5rem; /* Adjust the size for smaller screens */
+    }
+
+    .jumbotron h2 {
+        font-size: 2rem; /* Adjust the size for smaller screens */
+    }
+
+    .jumbotron .btn {
+        font-size: 14px;
+        padding: 8px 16px;
+        height: auto;
+        margin-top: 10px;
+    }
+
+    .navbar {
+        height: auto;
+        padding: 10px;
+    }
+
+    .navbar-brand, .nav-link {
+        font-size: 16px;
+        height: 100px;
+    }
+
+    .countdown-bar {
+        padding: 10px ;
+        font-size: 1rem;
+    }
+
+
+    .time-unit span {
+        font-size: 1.5rem;
+    }
+
+    .time-unit .label {
+        font-size: 0.8rem;
+    }
+
+    footer {
+        padding: 10px;
+    }
+}

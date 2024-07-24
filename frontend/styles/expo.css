@@ -1,0 +1,71 @@
+/* General Styles */
+body {
+    font-family: 'Rubik', sans-serif;
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+/* Navbar Styles */
+.navbar {
+    height: 90px;
+    background-color: #194788;
+}
+
+.navbar-brand, .nav-link {
+    color: white !important;
+}
+
+.nav-link:hover {
+    color: #ffcccb !important;
+}
+.nav-link {
+    padding-right: 20px !important;
+}
+
+.container {
+    height: auto;
+    width: 100%;
+    padding: 0 20px;
+}
+
+/* Custom Styles for Row */
+.custom-row {
+    width: 100%;
+    max-width: 1200px;
+    margin: 0 auto;
+}
+
+.row {
+    width: 100%;
+    padding-top: 50px;
+    display: flex;
+    flex-wrap: wrap;
+}
+
+.col-md-5 {
+    margin-left: 0; /* Ajuste de margen */
+    margin-right: 0; /* Ajuste de margen */
+    flex: 0 0 100%; /* Asegura que tome el 100% en pantallas pequeñas */
+}
+
+/* Footer Styles */
+footer {
+    background-color: #c5c5e0;
+    color: white;
+    padding: 20px;
+    text-align: center;
+}
+
+/* Responsiveness */
+@media (min-width: 768px) {
+    .col-md-5 {
+        margin-left: -80px;
+        margin-right: 150px;
+        flex: 0 0 40%; /* Ajusta el tamaño en pantallas medianas y grandes */
+    }
+
+    .container {
+        height: 689px;
+    }
+}
