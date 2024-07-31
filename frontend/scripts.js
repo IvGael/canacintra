@@ -1,4 +1,3 @@
-
 // Texto Animado
 var typed = new Typed('#typed-text', {
     strings: ["EXPOSICION DE PROVEEDURIA", "ENCUENTRO DE NEGOCIOS", "CONFERENCIAS", "TALLERES", "NETWORKING"],

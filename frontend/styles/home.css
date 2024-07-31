@@ -14,7 +14,7 @@ body {
 /* Navbar Styles */
 .navbar {
     height: 90px;
-    background-color: #0c2b4b;
+    background-color: #0c0c0e;
     display: flex;
     justify-content: space-between;
     align-items: center;
@@ -32,7 +32,7 @@ body {
 
 /* Jumbotron Styles */
 .display-4 {
-    font-size: 3rem; /* Increase the size of the typed text */
+    font-size: 3rem;
 }
 
 .jumbotron {
@@ -43,98 +43,114 @@ body {
     display: flex;
     flex-direction: column;
     justify-content: center;
-    align-items: flex-start; /* Align items to the left */
-    padding: 20px 180px; /* Add padding to the left */
+    align-items: flex-start;
+    padding: 20px 180px;
     position: relative;
-    text-align: left; /* Ensure text alignment to the left */
+    text-align: left;
+}
+
+/* Countdown Timer Styles */
+.countdown-timer {
+    position: absolute;
+    bottom: 90px;
+    right: 80px;
+    background-color: rgba(0, 0, 0, 0.7);
+    padding: 10px 20px;
+    border-radius: 10px;
+    color: white;
+    display: flex;
+    justify-content: space-between;
+    width: 500px;
+}
+
+.time-unit {
+    text-align: center;
+    margin: 0 5px;
+}
+
+.time-unit span {
+    display: block;
+    font-size: 2.5rem;
+    font-weight: bold;
+}
+
+.time-unit .label {
+    font-size: 1.5rem;
+    font-weight: normal;
+    color: #ccc;
 }
 
 .jumbotron h1 {
-    font-size: 4rem; /* Increase the size of the main heading */
+    font-size: 4rem;
 }
 
 .jumbotron h2 {
-    font-size: 3rem; /* Increase the size of the subheading */
+    font-size: 3rem;
 }
 
 .jumbotron .btn {
-    background-color: #2d304e;
+    background-color: #2c2f4d;
     border: none;
     padding: 15px 40px;
     font-size: 20px;
     margin-top: 20px;
 }
 
-.col-md-4 {
-    padding: 50px;
-    padding-top: 10px
+/* Main Content Styles */
+.section-highlight1, .section-highlight2, .section-highlight3, .section-highlight4 {
+    padding: 60px 20px;
+    color: #333;
 }
 
-#typed-text {
-    font-size: 3rem; /* Increase the size of the typed text */
+.section-title {
+    font-size: 2.8rem;
     font-weight: bold;
+    color: #333;
+    margin-bottom: 30px;
 }
 
-.countdown-bar {
-    background-color: #f8f9fa;
-    padding: 20px 0;
+.section-text {
     font-size: 1.2rem;
-}
-
-#countdown {
-    display: flex;
-    justify-content: center;
-    align-items: center;
-    font-size: 1.5rem;
-}
-
-.time-unit {
-    background: #fff;
-    border: 2px solid #0c2b4b;
-    border-radius: 10px;
-    padding: 10px 30px;
-    margin: 0 30px;
-    text-align: center;
-    color: #0c2b4b;
-}
-
-.time-unit span {
-    display: block;
-    font-size: 2rem;
-    font-weight: bold;
-}
-
-.time-unit .label {
-    font-size: 1rem;
-    font-weight: normal;
+    line-height: 1.8;
+    margin-bottom: 40px;
     color: #555;
 }
 
-.section-highlight1 {
-    background-color: #ffffff;
+/* Card Styles */
+.card {
+    border: none;
+    border-radius: 15px;
     padding: 20px;
-}
-.section-highlight1 h2 {
-    color: #0c2b4b;
-    font-size: 3rem
-}
-
-.section-highlight1 p2 {
-    font-size: 1.2rem
-}
-
-.section-highlight1 p {
-    font-size: 1rem
+    background: white;
+    transition: transform 0.3s, box-shadow 0.3s;
+    height: 300px; /* Establece una altura fija */
+    width: 100%; /* Asegura que las cartas se ajusten al contenedor */
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    overflow: hidden; /* Asegura que las imágenes no se desborden */
 }
 
-.section-highlight {
-    background-color: #295683;
-    color: white;
+.card img {
+    max-width: 100%;
+    max-height: 100%;
+    object-fit: contain; /* Mantiene la relación de aspecto de las imágenes */
 }
 
-.col-md-12 {
- 
-    padding-top: 50px
+.card:hover {
+    transform: translateY(-10px);
+    box-shadow: 0 6px 18px rgba(0, 0, 0, 0.2);
+}
+
+.card-title {
+    font-size: 1.4rem;
+    font-weight: bold;
+    color: #333;
+}
+
+.card-text, .blockquote {
+    font-size: 1rem;
+    color: #666;
 }
 
 /* Footer Styles */
@@ -145,10 +161,10 @@ footer {
     text-align: center;
 }
 
-/* Responsiveness */
+/* Responsive adjustments */
 @media (max-width: 768px) {
     .display-4 {
-        font-size: 2rem; /* Adjust the size for smaller screens */
+        font-size: 2rem;
     }
 
     .jumbotron {
@@ -157,11 +173,11 @@ footer {
     }
 
     .jumbotron h1 {
-        font-size: 2.5rem; /* Adjust the size for smaller screens */
+        font-size: 2.5rem;
     }
 
     .jumbotron h2 {
-        font-size: 2rem; /* Adjust the size for smaller screens */
+        font-size: 2rem;
     }
 
     .jumbotron .btn {
@@ -182,10 +198,9 @@ footer {
     }
 
     .countdown-bar {
-        padding: 10px ;
+        padding: 10px;
         font-size: 1rem;
     }
-
 
     .time-unit span {
         font-size: 1.5rem;

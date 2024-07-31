@@ -1,52 +1,81 @@
+@font-face {
+    font-family: 'Bahnschrift';
+    src: url('/frontend/fonts/Bahnschrift-Font-Family/BAHNSCHRIFT.TTF') format('truetype');
+}
+
 /* General Styles */
 body {
-    font-family: 'Rubik', sans-serif;
+    font-family: 'Bahnschrift', sans-serif;
     margin: 0;
     padding: 0;
     box-sizing: border-box;
+    background: linear-gradient(to right, #1f1f1f, #929292);
+    color: #333;
 }
 
 /* Navbar Styles */
 .navbar {
     height: 90px;
-    background-color: #194788;
+    background-color: #0c0c0e;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 0 20px;
 }
 
 .navbar-brand, .nav-link {
     color: white !important;
+    text-decoration: none;
 }
 
 .nav-link:hover {
     color: #ffcccb !important;
 }
-.nav-link {
-    padding-right: 20px !important;
-}
 
-.container {
-    height: auto;
-    width: 100%;
-    padding: 0 20px;
-}
-
-/* Custom Styles for Row */
-.custom-row {
-    width: 100%;
-    max-width: 1200px;
-    margin: 0 auto;
-}
-
-.row {
-    width: 100%;
-    padding-top: 50px;
+/* Form Styles */
+.registration-form {
+    background-color: #ffffff;
+    padding: 50px;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+    border-radius: 10px;
+    min-height: 80vh;
     display: flex;
-    flex-wrap: wrap;
+    flex-direction: column;
+    justify-content: center;
+    max-width: 900px;
+    margin-right: 20px; /* Separar del borde derecho */
 }
 
-.col-md-5 {
-    margin-left: 0; /* Ajuste de margen */
-    margin-right: 0; /* Ajuste de margen */
-    flex: 0 0 100%; /* Asegura que tome el 100% en pantallas pequeñas */
+.registration-form .form-group {
+    margin-bottom: 20px;
+}
+
+.registration-form .btn-primary {
+    background-color: #0c0c0c;
+    border: none;
+    padding: 10px 20px;
+    border-radius: 5px;
+}
+
+/* Left Section Styles */
+
+
+#left-section .text-container {
+    position: absolute;
+    top: 35%;
+    left: 45%;
+    transform: translate(-50%, -50%);
+    color: white;
+    width: 70%;
+}
+
+#left-section .text-container h1 {
+    font-size: 3.5rem;
+    margin-bottom: 20px;
+}
+
+#left-section .text-container p {
+    font-size: 1.6rem;
 }
 
 /* Footer Styles */
@@ -58,14 +87,23 @@ footer {
 }
 
 /* Responsiveness */
-@media (min-width: 768px) {
-    .col-md-5 {
-        margin-left: -80px;
-        margin-right: 150px;
-        flex: 0 0 40%; /* Ajusta el tamaño en pantallas medianas y grandes */
+@media (max-width: 768px) {
+    .navbar {
+        height: auto;
+        padding: 10px;
     }
 
-    .container {
-        height: 689px;
+    .navbar-brand, .nav-link {
+        font-size: 16px;
+        height: 100px;
+    }
+
+    .registration-form {
+        padding: 20px;
+        margin-right: 10px; /* Margen reducido para pantallas pequeñas */
+    }
+
+    #left-section {
+        height: 50vh;
     }
 }
