@@ -1,81 +1,146 @@
 <?php
-require 'vendor/autoload.php';  // Asegúrate de que la ruta a autoload.php sea correcta
+require 'vendor/autoload.php';
+require 'plugins/phpqrcode/qrlib.php';
 
 use PHPMailer\PHPMailer\PHPMailer;
 use PHPMailer\PHPMailer\Exception;
 
+header("Content-Type: application/json");
+
+ob_start(); // Inicia el almacenamiento en búfer de la salida
+
 $servername = "localhost";
 $username = "root";
-$password = "";
+$password = "1234";
 $dbname = "canacintra";
 
-// Crear conexión
 $conn = new mysqli($servername, $username, $password, $dbname);
 
-// Verificar conexión
 if ($conn->connect_error) {
-    die(json_encode(['success' => false, 'message' => 'Conexión fallida: ' . $conn->connect_error]));
+    ob_end_clean();
+    echo json_encode(['success' => false, 'message' => 'Conexión fallida: ' . $conn->connect_error]);
+    exit();
 }
 
-// Verificar y obtener datos del formulario
 $firstName = isset($_POST['first_name']) ? $_POST['first_name'] : null;
 $lastName = isset($_POST['last_name']) ? $_POST['last_name'] : null;
 $email = isset($_POST['email']) ? $_POST['email'] : null;
 $phone = isset($_POST['phone']) ? $_POST['phone'] : null;
-$eventId = isset($_POST['event_id']) ? $_POST['event_id'] : null;
+$company = isset($_POST['company']) ? $_POST['company'] : null;
+$position = isset($_POST['position']) ? $_POST['position'] : null;
 
-// Verificar si todos los datos requeridos están presentes
-if ($firstName && $lastName && $email && $eventId) {
-    // Insertar usuario
-    $sqlUser = "INSERT INTO usuarios (nombre, apellido, correo_electronico, telefono) VALUES (?, ?, ?, ?)";
+if ($firstName && $lastName && $email && $company && $position) {
+    $sqlUser = "INSERT INTO usuarios (nombre, apellido, correo_electronico, telefono, empresa, puesto) VALUES (?, ?, ?, ?, ?, ?)";
     $stmtUser = $conn->prepare($sqlUser);
-    $stmtUser->bind_param("ssss", $firstName, $lastName, $email, $phone);
+    if (!$stmtUser) {
+        ob_end_clean();
+        echo json_encode(['success' => false, 'message' => 'Error en la preparación de la consulta de usuario: ' . $conn->error]);
+        exit();
+    }
+    $stmtUser->bind_param("ssssss", $firstName, $lastName, $email, $phone, $company, $position);
 
     if ($stmtUser->execute()) {
         $userId = $stmtUser->insert_id;
 
-        // Insertar registro
-        $sqlRegistration = "INSERT INTO registros (id_usuario, id_evento) VALUES (?, ?)";
-        $stmtRegistration = $conn->prepare($sqlRegistration);
-        $stmtRegistration->bind_param("ii", $userId, $eventId);
+        // Generación del código QR
+        $dir = 'plugins/codes/';
+        if (!file_exists($dir)) {
+            if (!mkdir($dir, 0777, true)) {
+                ob_end_clean();
+                echo json_encode(['success' => false, 'message' => 'No se pudo crear el directorio para los códigos QR.']);
+                exit();
+            }
+        }
 
-        if ($stmtRegistration->execute()) {
-            // Enviar correo electrónico
+        $filename = $dir . $userId . '_qr.png';
+        $tamaño = 10;
+        $level = 'L';
+        $frameSize = 3;
+        $contenido = 'ID Usuario: ' . $userId;
+
+        // Registro para depuración
+        error_log("Generando QR con contenido: " . $contenido);
+        error_log("Archivo QR: " . $filename);
+
+        try {
+            QRcode::png($contenido, $filename, $level, $tamaño, $frameSize);
+
+            if (!file_exists($filename)) {
+                throw new Exception('El archivo QR no se generó correctamente.');
+            }
+
+            $cid = md5(uniqid(time()));
+
             $mail = new PHPMailer(true);
+
+            // Activa el nivel de depuración de SMTP para desarrollo (ajusta a 0 en producción)
+            $mail->SMTPDebug = 2;
+
             try {
-                // Configuración del servidor
                 $mail->isSMTP();
-                $mail->Host = 'smtp.gmail.com';  // Cambia esto al servidor SMTP que estás utilizando
+                $mail->Host = 'smtp.gmail.com';
                 $mail->SMTPAuth = true;
-                $mail->Username = 'gael.chavez@uabc.edu.mx';  // Cambia esto a tu correo electrónico
-                $mail->Password = 'Happ1Goek';  // Cambia esto a tu contraseña
+                $mail->Username = 'gael.chavez@uabc.edu.mx';  // Asegúrate de usar una contraseña de aplicación si tienes 2FA activado
+                $mail->Password = 'Happ1Goek';
                 $mail->SMTPSecure = PHPMailer::ENCRYPTION_STARTTLS;
                 $mail->Port = 587;
 
-                // Remitente y destinatario
                 $mail->setFrom('gael.chavez@uabc.edu.mx', 'CANACINTRA Tecate');
                 $mail->addAddress($email);
 
-                // Contenido del correo
                 $mail->isHTML(true);
                 $mail->Subject = 'Registro en Expo Empresas';
-                $mail->Body    = 'Hola, <br><br> Gracias por registrarte en el evento Expo Empresas. <br><br> Saludos,<br>CANACINTRA Tecate';
+                $mail->AddEmbeddedImage($filename, $cid, basename($filename));
+                $mail->Body    = "
+                    <html>
+                    <head>
+                        <style>
+                            body { font-family: Arial, sans-serif; line-height: 1.6; }
+                            .container { padding: 20px; border: 1px solid #ddd; border-radius: 10px; max-width: 600px; margin: auto; }
+                            .header { background-color: #f8f8f8; padding: 10px; text-align: center; border-bottom: 1px solid #ddd; }
+                            .header h1 { margin: 0; }
+                            .content { padding: 20px; }
+                            .content p { margin: 0 0 10px; }
+                            .footer { text-align: center; padding: 10px; border-top: 1px solid #ddd; background-color: #f8f8f8; border-bottom-left-radius: 10px; border-bottom-right-radius: 10px; }
+                        </style>
+                    </head>
+                    <body>
+                        <div class='container'>
+                            <div class='header'>
+                                <h1>¡Gracias por registrarte, $firstName!</h1>
+                            </div>
+                            <div class='content'>
+                                <p>Hola $firstName,</p>
+                                <p>Gracias por registrarte en el evento Expo Empresas. A continuación, encontrarás tu código QR que necesitarás para el acceso al evento:</p>
+                                <p><img src='cid:$cid' alt='Código QR'></p>
+                                <p>¡Nos vemos pronto!</p>
+                            </div>
+                            <div class='footer'>
+                                <p>&copy; 2024 CANACINTRA Tecate. Todos los derechos reservados.</p>
+                            </div>
+                        </div>
+                    </body>
+                    </html>";
 
                 $mail->send();
-                echo json_encode(['success' => true]);
+                ob_end_clean();
+                echo json_encode(['success' => true, 'message' => 'Correo enviado correctamente.']);
             } catch (Exception $e) {
+                ob_end_clean();
                 echo json_encode(['success' => false, 'message' => 'El mensaje no pudo ser enviado. Error: ' . $mail->ErrorInfo]);
             }
-        } else {
-            echo json_encode(['success' => false, 'message' => 'Error: ' . $stmtRegistration->error]);
+        } catch (Exception $e) {
+            ob_end_clean();
+            echo json_encode(['success' => false, 'message' => 'Error al generar el código QR: ' . $e->getMessage()]);
         }
     } else {
-        echo json_encode(['success' => false, 'message' => 'Error: ' . $stmtUser->error]);
+        ob_end_clean();
+        echo json_encode(['success' => false, 'message' => 'Error al insertar el usuario: ' . $stmtUser->error]);
     }
 
     $stmtUser->close();
-    $stmtRegistration->close();
 } else {
+    ob_end_clean();
     echo json_encode(['success' => false, 'message' => 'Faltan datos en el formulario.']);
 }
 
