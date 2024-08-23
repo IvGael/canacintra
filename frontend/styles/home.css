@@ -102,62 +102,156 @@ body {
     color: #333;
 }
 
-.section-highlight1 {
-    background-color: #302121;
-}
-
+/* Para centrar el título */
 .section-title {
+    margin-top: 1%;
     font-size: 2.8rem;
     font-weight: bold;
     color: #333;
     margin-bottom: 30px;
+    text-align: center; /* Centramos el título */
 }
 
-.section-text {
-    font-size: 1.2rem;
-    line-height: 1.8;
-    margin-bottom: 40px;
-    color: #555;
+.section-title2 {
+    margin-top: 8%;
+    font-size: 2.8rem;
+    font-weight: bold;
+    color: #333;
+    margin-bottom: 30px;
+    text-align: center; /* Centramos el título */
 }
 
-/* Objective Points Styles */
-.objective-points {
-    float: right;
+.video-container {
+    position: relative;
+    width: 90%; /* Ocupa todo el ancho del contenedor padre */
+    padding-bottom: 50.65%; /* Mantiene la proporción 16:9 */
+    height: 0;
+    overflow: hidden;
+    margin-left: 5%;
+    margin-bottom: 1%; /* Espacio debajo del video */
 }
 
-.objective-point {
-    display: flex;
-    align-items: center;
-    margin-bottom: 20px;
+.video-container iframe {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
 }
 
-.objective-number {
-    font-size: 2rem;
-    background-color: #007bff;
-    color: white;
-    width: 50px;
-    height: 50px;
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    border-radius: 50%;
-    margin-right: 15px;
+.objective-points{
+    margin-left: 3%;
+    margin-right: 10%;
+    padding-top: 15%;
 }
-
-.objective-text {
-    text-align: left;
+.objective-point{
+    padding-top: 2%;
 }
 
 .objective-title {
     font-size: 1.4rem;
     font-weight: bold;
-    color: #333;
+    color: #333333;
 }
 
 .objective-text p {
     font-size: 1rem;
+    color: #666666;
+    margin-top: 10px;
+    margin-bottom: 10px;
+}
+
+
+/* Para alinear el texto más a la izquierda */
+.objective-text {
+    text-align: left; /* Alinea el texto a la izquierda */
+    margin-left: 0;   /* Asegura que no haya margen hacia la izquierda */
+    margin-right: auto; /* Alinea el texto al principio del contenedor */
+}
+
+
+/* Card Styles */
+.card {
+    border: none;
+    border-radius: 15px;
+    padding: 20px;
+    background: white;
+    transition: transform 0.3s, box-shadow 0.3s;
+    height: 300px; /* Establece una altura fija */
+    width: 100%; /* Asegura que las cartas se ajusten al contenedor */
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    overflow: hidden; /* Asegura que las imágenes no se desborden */
+}
+
+.card img {
+    max-width: 100%;
+    max-height: 100%;
+    object-fit: contain; /* Mantiene la relación de aspecto de las imágenes */
+}
+
+.card:hover {
+    transform: translateY(-10px);
+    box-shadow: 0 6px 18px rgba(0, 0, 0, 0.2);
+}
+
+.card-title {
+    font-size: 1.4rem;
+    font-weight: bold;
+    color: #333;
+}
+
+.card-text, .blockquote {
+    font-size: 1rem;
     color: #666;
 }
+
+.flayer-image {
+    max-width: 100% !important;
+    height: auto !important;
+    width: 50% !important;  /* Ajusta el ancho de la imagen al 50% del contenedor */
+    display: block !important;
+    margin: 0 19% !important;
+}
+
+.sponsor-slider {
+    overflow: hidden;
+    position: relative;
+    width: 100%;
+}
+
+.slider-track {
+    display: flex;
+    width: calc(200%); /* El doble para permitir el efecto de bucle */
+    animation: scroll 30s linear infinite;
+}
+.slider-track2 {
+    display: flex;
+    width: calc(200%); /* El doble para permitir el efecto de bucle */
+    animation: scroll 20s linear infinite;
+}
+
+.slide {
+    width: 25%; /* Cambia el tamaño del ancho si hay más o menos imágenes */
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    margin-right: 1.5%;
+}
+
+.slide img {
+    max-width: 100%;
+    border-radius: 15px;
+    margin-right: 20px;
+}
+
+@keyframes scroll {
+    0% { transform: translateX(0); }
+    100% { transform: translateX(-50%); }
+}
+
+
 
 /* Footer Styles */
 footer {

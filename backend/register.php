@@ -6,12 +6,13 @@ use PHPMailer\PHPMailer\PHPMailer;
 use PHPMailer\PHPMailer\Exception;
 
 header("Content-Type: application/json");
+header("Access-Control-Allow-Origin: *");
 
 ob_start(); // Inicia el almacenamiento en búfer de la salida
 
 $servername = "localhost";
 $username = "root";
-$password = "1234";
+$password = "";
 $dbname = "canacintra";
 
 $conn = new mysqli($servername, $username, $password, $dbname);
@@ -129,7 +130,7 @@ if ($firstName && $lastName && $email && $company && $position) {
                                 </div>
                                 <div class='content'>
                                     <p>Hola $firstName,</p>
-                                    <p>Gracias por registrarte en el evento Expo Empresas. A continuación, encontrarás tu código QR con la información de contacto que necesitarás para el acceso al evento:</p>
+                                    <p>Gracias por registrarte a Expo Industria Tecate 2024. A continuación, encontrarás tu código QR con la información de contacto que necesitarás para el acceso al evento:</p>
                                     <p><img src='cid:$cid' alt='Código QR'></p>
                                     <p>¡Nos vemos pronto!</p>
                                 </div>
