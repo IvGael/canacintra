@@ -144,9 +144,7 @@ body {
     margin-right: 10%;
     padding-top: 15%;
 }
-.objective-point{
-    padding-top: 2%;
-}
+
 
 .objective-title {
     font-size: 1.4rem;
@@ -261,15 +259,46 @@ footer {
     text-align: center;
 }
 
+
+
+
 /* Responsive adjustments */
 @media (max-width: 768px) {
-    .display-4 {
-        font-size: 2rem;
+    .navbar {
+        height: auto;
+        padding: 10px 15px; /* Ajuste de padding para mejor alineación */
+        justify-content: space-between;
     }
 
+    .navbar-brand {
+        padding: 0;
+        margin-right: 0;
+        height: auto;
+    }
+
+    .navbar-brand img {
+        height: 80px; /* Reducimos el tamaño del logo para móviles */
+        max-width: 100%; /* Aseguramos que la imagen no se desborde */
+    }
+
+    .navbar-toggler {
+        margin-top: 10px; /* Ajustamos el margen superior del botón de colapso */
+    }
+
+    .navbar-collapse {
+        text-align: center; /* Centramos el contenido del menú en dispositivos móviles */
+    }
+
+    .nav-link {
+        font-size: 14px; /* Ajustamos el tamaño de fuente de los enlaces */
+        margin: 5px 0; /* Espaciado entre los elementos del menú */
+    }
+
+    /* Jumbotron adjustments for mobile */
     .jumbotron {
         height: auto;
         padding: 20px;
+        text-align: center; /* Centramos el contenido para dispositivos móviles */
     }
 
     .jumbotron h1 {
@@ -287,19 +316,12 @@ footer {
         margin-top: 10px;
     }
 
-    .navbar {
-        height: auto;
+    /* Countdown timer adjustments */
+    .countdown-timer {
+        bottom: 20px; /* Reducimos el margen inferior */
+        right: 10px; /* Ajustamos la posición */
+        width: 100%; /* Ocupamos todo el ancho disponible */
         padding: 10px;
-    }
-
-    .navbar-brand, .nav-link {
-        font-size: 16px;
-        height: 100px;
-    }
-
-    .countdown-bar {
-        padding: 10px;
-        font-size: 1rem;
     }
 
     .time-unit span {
@@ -310,6 +332,7 @@ footer {
         font-size: 0.8rem;
     }
 
+    /* Footer adjustments */
     footer {
         padding: 10px;
     }

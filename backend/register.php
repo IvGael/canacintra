@@ -11,9 +11,9 @@ header("Access-Control-Allow-Origin: *");
 ob_start(); // Inicia el almacenamiento en búfer de la salida
 
 $servername = "localhost";
-$username = "root";
-$password = "";
-$dbname = "canacintra";
+$username = "u449484077_root";
+$password = "Expoindustriatkt1";
+$dbname = "u449484077_canacintrabd";
 
 $conn = new mysqli($servername, $username, $password, $dbname);
 
@@ -99,12 +99,12 @@ if ($firstName && $lastName && $email && $company && $position) {
                     $mail->isSMTP();
                     $mail->Host = 'smtp.gmail.com';
                     $mail->SMTPAuth = true;
-                    $mail->Username = 'gael.chavez@uabc.edu.mx';  // Asegúrate de usar una contraseña de aplicación si tienes 2FA activado
-                    $mail->Password = 'Happ1Goek';
+                    $mail->Username = 'canacintra.tecate24@gmail.com';  // Asegúrate de usar una contraseña de aplicación si tienes 2FA activado
+                    $mail->Password = 'vlyb bqyi bhzl lgab';
                     $mail->SMTPSecure = PHPMailer::ENCRYPTION_STARTTLS;
                     $mail->Port = 587;
 
-                    $mail->setFrom('gael.chavez@uabc.edu.mx', 'CANACINTRA Tecate');
+                    $mail->setFrom('canacintra.tecate24@gmail.com', 'CANACINTRA Tecate');
                     $mail->addAddress($email);
 
                     $mail->isHTML(true);
