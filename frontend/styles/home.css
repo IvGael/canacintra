@@ -4,12 +4,17 @@
 }
 
 /* General Styles */
+/* General Body Styles */
 body {
     font-family: 'Bahnschrift', sans-serif;
     margin: 0;
     padding: 0;
-    box-sizing: border-box;
+
 }
+
+/* Estilos generales para los párrafos */
+
+
 
 /* Navbar Styles */
 .navbar {
@@ -48,6 +53,7 @@ body {
     position: relative;
     text-align: left;
 }
+
 
 /* Countdown Timer Styles */
 .countdown-timer {
@@ -97,10 +103,37 @@ body {
 }
 
 /* Main Content Styles */
-.section-highlight1, .section-highlight2, .section-highlight3, .section-highlight4 {
-    padding: 60px 20px;
+.py-5{
+    padding-bottom: 0px !important;
+}
+.section-highlight1{
+    font-size: 1.55rem;
+    padding: 80px 60px;
+    color: #333;
+    padding-top: 5% !important;
+    padding-bottom: 1% !important;
+} 
+
+.section-highlight2{
+    padding: 0px 0px;
+    color: #333;
+    padding-bottom: 6% !important;
+}
+
+
+.section-highlight3{
+    padding: 60px 0px;
+    padding-bottom: 4% !important;
     color: #333;
 }
+
+.section-highlight4{
+    padding: 60px 0px;
+    padding-bottom: 4% !important;
+    color: #333;
+}
+
+
 
 /* Para centrar el título */
 .section-title {
@@ -108,7 +141,7 @@ body {
     font-size: 2.8rem;
     font-weight: bold;
     color: #333;
-    margin-bottom: 30px;
+    margin-bottom: 10px;
     text-align: center; /* Centramos el título */
 }
 
@@ -128,21 +161,24 @@ body {
     height: 0;
     overflow: hidden;
     margin-left: 5%;
+    margin-top: 6%;
     margin-bottom: 1%; /* Espacio debajo del video */
 }
 
-.video-container iframe {
+.video-container video {
     position: absolute;
     top: 0;
     left: 0;
     width: 100%;
     height: 100%;
+    object-fit: cover; /* Asegura que el video cubra el contenedor sin dejar espacios */
 }
+
 
 .objective-points{
     margin-left: 3%;
     margin-right: 10%;
-    padding-top: 15%;
+    padding-top: 14%;
 }
 
 
@@ -153,10 +189,9 @@ body {
 }
 
 .objective-text p {
-    font-size: 1rem;
+    font-size: 1.15rem;
     color: #666666;
-    margin-top: 10px;
-    margin-bottom: 10px;
+    margin-bottom: 40px;
 }
 
 
@@ -257,83 +292,137 @@ footer {
     color: white;
     padding: 20px;
     text-align: center;
+    font-size: 1.15rem;
 }
 
 
 
 
+
 /* Responsive adjustments */
-@media (max-width: 768px) {
-    .navbar {
-        height: auto;
-        padding: 10px 15px; /* Ajuste de padding para mejor alineación */
-        justify-content: space-between;
+@media (max-width: 760px) {
+    /* Section Highlight Adjustments */
+    .section-highlight1, .section-highlight2 {
+        padding: 15px 10px; /* Mantiene un padding coherente */
+        font-size: 1rem; /* Ajusta el tamaño del texto para mejor legibilidad */
     }
 
-    .navbar-brand {
-        padding: 0;
-        margin-right: 0;
-        height: auto;
+    .section-highlight1 h2{
+        padding-top: 8%;
+    }
+
+    .section-highlight1 h2, .section-highlight2 h2 {
+        font-size: 1.6rem; /* Ajuste del tamaño del título */
+    }
+    .section-title {
+        font-size: 1.3rem ; /* Ajustamos el tamaño del título */
+    }
+    
+    .py-5, .pb-5 {
+        padding: 10px !important; /* Ajustamos el padding para dispositivos móviles */
+    }
+    .navbar {
+        height: 95px; /* Reducimos la altura del header en dispositivos móviles */
     }
 
     .navbar-brand img {
-        height: 80px; /* Reducimos el tamaño del logo para móviles */
-        max-width: 100%; /* Aseguramos que la imagen no se desborde */
+        height: 35px !important;  /* Ajustamos el tamaño del logo en móviles */
     }
 
-    .navbar-toggler {
-        margin-top: 10px; /* Ajustamos el margen superior del botón de colapso */
-    }
-
-    .navbar-collapse {
-        text-align: center; /* Centramos el contenido del menú en dispositivos móviles */
-    }
-
-    .nav-link {
-        font-size: 14px; /* Ajustamos el tamaño de fuente de los enlaces */
-        margin: 5px 0; /* Espaciado entre los elementos del menú */
-    }
-
-    /* Jumbotron adjustments for mobile */
     .jumbotron {
-        height: auto;
+        margin-top: 30px; /* Ajustamos el margen superior para que la primera sección no quede oculta */
         padding: 20px;
+        padding-top: 110px; /* Ajusta este valor para mover el texto más arriba */
         text-align: center; /* Centramos el contenido para dispositivos móviles */
+        background-size: cover;
+        justify-content:unset;    
     }
 
     .jumbotron h1 {
-        font-size: 2.5rem;
-    }
-
-    .jumbotron h2 {
         font-size: 2rem;
     }
 
+    .jumbotron h2 {
+        font-size: 1.5rem;
+    }
+
     .jumbotron .btn {
-        font-size: 14px;
-        padding: 8px 16px;
-        height: auto;
-        margin-top: 10px;
+        font-size: 20px;
+        padding: 17px 70px;
+        margin-top: 15%;
+        margin-left: auto;  /* Añade esta línea */
+        margin-right: auto; /* Añade esta línea */
+        display: block;     /* Asegura que el botón esté alineado en bloque */
+    }
+    
+
+    .typed {
+        font-size: 1.45rem;
     }
 
     /* Countdown timer adjustments */
     .countdown-timer {
-        bottom: 20px; /* Reducimos el margen inferior */
-        right: 10px; /* Ajustamos la posición */
-        width: 100%; /* Ocupamos todo el ancho disponible */
-        padding: 10px;
+        bottom: 14%; /* Reducimos el margen inferior */
+        right: 0px; /* Ajustamos la posición */
+        left: 0px;
+        width: 90%; /* Ocupamos todo el ancho disponible */
+        margin-left: auto;  /* Añade esta línea */
+        margin-right: auto; /* Añade esta línea */
+
     }
 
     .time-unit span {
-        font-size: 1.5rem;
+        font-size: 1.2rem;
     }
 
     .time-unit .label {
         font-size: 0.8rem;
     }
 
-    /* Footer adjustments */
-    footer {
+       /* Video Adjustments */
+       .video-container {
+        width: 100%;
+        padding-bottom: 56.25%; /* Mantiene la proporción 16:9 */
+        margin: 15px auto;
+    }
+
+    /* Objective Points Adjustments */
+    .objective-points {
+        margin: 0;
+        padding: 5%;
+    }
+
+    /* Card Adjustments */
+    .card {
+        height: auto;
         padding: 10px;
+        margin-bottom: 15px;
+    }
+
+    .card img {
+        max-width: 100%;
+        max-height: 100%;
+        margin: 0 auto;
+    }
+
+    /* Sponsor Slider Adjustments */
+    .sponsor-slider {
+        height: 200%;
+        width: 100%;
+    }
+
+    .slider-track, .slider-track2 {
+        width: 200%;
+    }
+
+    .slide {
+        margin-right: 2%;
+    }
+
+    /* Footer Adjustments */
+    footer {
+        padding: 15px;
+        font-size: 0.85rem;
     }
 }
+
