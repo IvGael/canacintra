@@ -4,17 +4,11 @@
 }
 
 /* General Styles */
-/* General Body Styles */
 body {
     font-family: 'Bahnschrift', sans-serif;
     margin: 0;
     padding: 0;
-
 }
-
-/* Estilos generales para los párrafos */
-
-
 
 /* Navbar Styles */
 .navbar {
@@ -53,7 +47,6 @@ body {
     position: relative;
     text-align: left;
 }
-
 
 /* Countdown Timer Styles */
 .countdown-timer {
@@ -103,37 +96,29 @@ body {
 }
 
 /* Main Content Styles */
-.py-5{
+.py-5 {
     padding-bottom: 0px !important;
 }
-.section-highlight1{
+
+.section-highlight1 {
     font-size: 1.55rem;
     padding: 80px 60px;
     color: #333;
     padding-top: 5% !important;
     padding-bottom: 1% !important;
-} 
+}
 
-.section-highlight2{
+.section-highlight2 {
     padding: 0px 0px;
     color: #333;
     padding-bottom: 6% !important;
 }
 
-
-.section-highlight3{
+.section-highlight3, .section-highlight4 {
     padding: 60px 0px;
     padding-bottom: 4% !important;
     color: #333;
 }
-
-.section-highlight4{
-    padding: 60px 0px;
-    padding-bottom: 4% !important;
-    color: #333;
-}
-
-
 
 /* Para centrar el título */
 .section-title {
@@ -142,27 +127,18 @@ body {
     font-weight: bold;
     color: #333;
     margin-bottom: 10px;
-    text-align: center; /* Centramos el título */
-}
-
-.section-title2 {
-    margin-top: 8%;
-    font-size: 2.8rem;
-    font-weight: bold;
-    color: #333;
-    margin-bottom: 30px;
-    text-align: center; /* Centramos el título */
+    text-align: center;
 }
 
 .video-container {
     position: relative;
-    width: 90%; /* Ocupa todo el ancho del contenedor padre */
-    padding-bottom: 50.65%; /* Mantiene la proporción 16:9 */
+    width: 90%;
+    padding-bottom: 50.65%;
     height: 0;
     overflow: hidden;
     margin-left: 5%;
     margin-top: 6%;
-    margin-bottom: 1%; /* Espacio debajo del video */
+    margin-bottom: 1%;
 }
 
 .video-container video {
@@ -171,16 +147,14 @@ body {
     left: 0;
     width: 100%;
     height: 100%;
-    object-fit: cover; /* Asegura que el video cubra el contenedor sin dejar espacios */
+    object-fit: cover;
 }
 
-
-.objective-points{
+.objective-points {
     margin-left: 3%;
     margin-right: 10%;
     padding-top: 14%;
 }
-
 
 .objective-title {
     font-size: 1.4rem;
@@ -194,14 +168,11 @@ body {
     margin-bottom: 40px;
 }
 
-
-/* Para alinear el texto más a la izquierda */
 .objective-text {
-    text-align: left; /* Alinea el texto a la izquierda */
-    margin-left: 0;   /* Asegura que no haya margen hacia la izquierda */
-    margin-right: auto; /* Alinea el texto al principio del contenedor */
+    text-align: left;
+    margin-left: 0;
+    margin-right: auto;
 }
-
 
 /* Card Styles */
 .card {
@@ -210,18 +181,18 @@ body {
     padding: 20px;
     background: white;
     transition: transform 0.3s, box-shadow 0.3s;
-    height: 300px; /* Establece una altura fija */
-    width: 100%; /* Asegura que las cartas se ajusten al contenedor */
+    height: auto;
+    width: 100%;
     display: flex;
     justify-content: center;
     align-items: center;
-    overflow: hidden; /* Asegura que las imágenes no se desborden */
+    overflow: hidden;
 }
 
 .card img {
     max-width: 100%;
     max-height: 100%;
-    object-fit: contain; /* Mantiene la relación de aspecto de las imágenes */
+    object-fit: contain;
 }
 
 .card:hover {
@@ -240,102 +211,109 @@ body {
     color: #666;
 }
 
-.flayer-image {
-    max-width: 100% !important;
-    height: auto !important;
-    width: 50% !important;  /* Ajusta el ancho de la imagen al 50% del contenedor */
-    display: block !important;
-    margin: 0 19% !important;
-}
-
+/* Ajustes para que los sliders no se encimen */
 .sponsor-slider {
     overflow: hidden;
     position: relative;
     width: 100%;
+    display: flex;
+    align-items: center;
 }
 
-.slider-track {
-    display: flex;
-    width: calc(200%); /* El doble para permitir el efecto de bucle */
-    animation: scroll 30s linear infinite;
-}
+.slider-track,
 .slider-track2 {
     display: flex;
-    width: calc(200%); /* El doble para permitir el efecto de bucle */
-    animation: scroll 20s linear infinite;
+    animation: scroll 30s linear infinite;
+    /* Ancho suficiente para que las imágenes ocupen el espacio necesario */
 }
 
+
+
 .slide {
-    width: 25%; /* Cambia el tamaño del ancho si hay más o menos imágenes */
+    flex: 0 0 auto;
     display: flex;
     justify-content: center;
     align-items: center;
-    margin-right: 1.5%;
 }
 
 .slide img {
-    max-width: 100%;
-    border-radius: 15px;
-    margin-right: 20px;
+    margin-left: 35px;
+    width: 200px;
+    height: auto;
+    max-height: 200px;
+    object-fit: contain;
+    border-radius: 10px;
 }
 
+/* Keyframes for continuous slider animation */
 @keyframes scroll {
     0% { transform: translateX(0); }
     100% { transform: translateX(-50%); }
 }
 
+/* Espaciado adicional para que las filas de slides no se encimen */
+.section-highlight3, .section-highlight4 {
+    padding: 60px 0px;
+    margin-bottom: 50px; /* Separa las secciones de sliders para evitar que se encimen */
+    color: #333;
+}
+
+
 
 
 /* Footer Styles */
 footer {
-    background-color: #c5c5e0;
+    background-color: #0c0c0e;
     color: white;
     padding: 20px;
     text-align: center;
     font-size: 1.15rem;
 }
 
-
-
-
+/* Keyframes for slider animation */
+@keyframes scroll {
+    0% { transform: translateX(0); }
+    100% { transform: translateX(-50%); }
+}
 
 /* Responsive adjustments */
 @media (max-width: 760px) {
-    /* Section Highlight Adjustments */
     .section-highlight1, .section-highlight2 {
-        padding: 15px 10px; /* Mantiene un padding coherente */
-        font-size: 1rem; /* Ajusta el tamaño del texto para mejor legibilidad */
+        padding: 15px 10px;
+        font-size: 1rem;
     }
 
-    .section-highlight1 h2{
+    .section-highlight1 h2 {
         padding-top: 8%;
     }
 
     .section-highlight1 h2, .section-highlight2 h2 {
-        font-size: 1.6rem; /* Ajuste del tamaño del título */
+        font-size: 1.6rem;
     }
+
     .section-title {
-        font-size: 1.3rem ; /* Ajustamos el tamaño del título */
+        font-size: 1.3rem;
     }
-    
+
     .py-5, .pb-5 {
-        padding: 10px !important; /* Ajustamos el padding para dispositivos móviles */
+        padding: 10px !important;
     }
+
     .navbar {
-        height: 95px; /* Reducimos la altura del header en dispositivos móviles */
+        height: 95px;
     }
 
     .navbar-brand img {
-        height: 35px !important;  /* Ajustamos el tamaño del logo en móviles */
+        height: 35px !important;
     }
 
     .jumbotron {
-        margin-top: 30px; /* Ajustamos el margen superior para que la primera sección no quede oculta */
+        margin-top: 30px;
         padding: 20px;
-        padding-top: 110px; /* Ajusta este valor para mover el texto más arriba */
-        text-align: center; /* Centramos el contenido para dispositivos móviles */
+        padding-top: 110px;
+        text-align: center;
         background-size: cover;
-        justify-content:unset;    
+        justify-content: unset;
     }
 
     .jumbotron h1 {
@@ -350,25 +328,22 @@ footer {
         font-size: 20px;
         padding: 17px 70px;
         margin-top: 15%;
-        margin-left: auto;  /* Añade esta línea */
-        margin-right: auto; /* Añade esta línea */
-        display: block;     /* Asegura que el botón esté alineado en bloque */
+        margin-left: auto;
+        margin-right: auto;
+        display: block;
     }
-    
 
     .typed {
         font-size: 1.45rem;
     }
 
-    /* Countdown timer adjustments */
     .countdown-timer {
-        bottom: 14%; /* Reducimos el margen inferior */
-        right: 0px; /* Ajustamos la posición */
+        bottom: 14%;
+        right: 0px;
         left: 0px;
-        width: 90%; /* Ocupamos todo el ancho disponible */
-        margin-left: auto;  /* Añade esta línea */
-        margin-right: auto; /* Añade esta línea */
-
+        width: 90%;
+        margin-left: auto;
+        margin-right: auto;
     }
 
     .time-unit span {
@@ -379,20 +354,17 @@ footer {
         font-size: 0.8rem;
     }
 
-       /* Video Adjustments */
-       .video-container {
+    .video-container {
         width: 100%;
-        padding-bottom: 56.25%; /* Mantiene la proporción 16:9 */
+        padding-bottom: 56.25%;
         margin: 15px auto;
     }
 
-    /* Objective Points Adjustments */
     .objective-points {
         margin: 0;
         padding: 5%;
     }
 
-    /* Card Adjustments */
     .card {
         height: auto;
         padding: 10px;
@@ -405,24 +377,13 @@ footer {
         margin: 0 auto;
     }
 
-    /* Sponsor Slider Adjustments */
-    .sponsor-slider {
-        height: 200%;
-        width: 100%;
+    .slide img {
+        width: 150px; /* Ajuste para pantallas móviles */
+        max-height: 100px;
     }
 
-    .slider-track, .slider-track2 {
-        width: 200%;
-    }
-
-    .slide {
-        margin-right: 2%;
-    }
-
-    /* Footer Adjustments */
     footer {
         padding: 15px;
         font-size: 0.85rem;
     }
 }
-
