@@ -174,37 +174,47 @@ body {
     margin-right: auto;
 }
 
-/* Card Styles */
+/* Estilos para las tarjetas en la sección B2B */
 .card {
     border: none;
     border-radius: 15px;
-    padding: 20px;
-    background: white;
+    overflow: hidden;
     transition: transform 0.3s, box-shadow 0.3s;
-    height: auto;
-    width: 100%;
+    width: 400px; /* Ancho más grande */
+    height: 250px; /* Alto más grande */
     display: flex;
     justify-content: center;
     align-items: center;
-    overflow: hidden;
-}
-
-.card img {
-    max-width: 100%;
-    max-height: 100%;
-    object-fit: contain;
+    box-shadow: 0 6px 18px rgba(0, 0, 0, 0.1);
+    background-color: #fcfcfc; /* Fondo para destacar los logos */
+    padding: 40px;
+    text-align: center; /* Centrar el texto en caso de que haya */
 }
 
 .card:hover {
     transform: translateY(-10px);
-    box-shadow: 0 6px 18px rgba(0, 0, 0, 0.2);
+    box-shadow: 0 8px 20px rgba(0, 0, 0, 0.2);
 }
 
-.card-title {
-    font-size: 1.4rem;
-    font-weight: bold;
-    color: #333;
+.card-img-top {
+    max-width: 100%; /* Asegura que la imagen se ajuste al ancho de la tarjeta */
+    max-height: 80%; /* Asegura que la imagen se ajuste a la altura de la tarjeta */
+    object-fit: contain;
+    display: block;
+    margin: auto; /* Centra horizontal y verticalmente la imagen */
 }
+
+/* Asegurar que las tarjetas estén centradas en el contenedor */
+.row.justify-content-center {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    flex-wrap: wrap; /* Permite que las tarjetas se ajusten en pantallas pequeñas */
+}
+
+
+
+
 
 .card-text, .blockquote {
     font-size: 1rem;
