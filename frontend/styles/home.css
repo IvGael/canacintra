@@ -221,7 +221,6 @@ body {
     color: #666;
 }
 
-/* Ajustes para que los sliders no se encimen */
 .sponsor-slider {
     overflow: hidden;
     position: relative;
@@ -233,17 +232,16 @@ body {
 .slider-track,
 .slider-track2 {
     display: flex;
-    animation: scroll 30s linear infinite;
-    /* Ancho suficiente para que las imágenes ocupen el espacio necesario */
+    animation: scroll 45s linear infinite;
+    /* Mantengo el ancho dinámico para que las imágenes ocupen el espacio necesario */
 }
-
-
 
 .slide {
     flex: 0 0 auto;
     display: flex;
     justify-content: center;
     align-items: center;
+    padding: 0 10px;
 }
 
 .slide img {
@@ -255,11 +253,16 @@ body {
     border-radius: 10px;
 }
 
-/* Keyframes for continuous slider animation */
+/* Keyframes para la animación continua del slider */
 @keyframes scroll {
-    0% { transform: translateX(0); }
-    100% { transform: translateX(-50%); }
+    0% {
+        transform: translateX(0);
+    }
+    100% {
+        transform: translateX(-100%);
+    }
 }
+
 
 /* Espaciado adicional para que las filas de slides no se encimen */
 .section-highlight3, .section-highlight4 {
