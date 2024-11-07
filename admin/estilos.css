@@ -112,3 +112,8 @@ h1 {
 .table .btn {
     margin: 0 5px;
 }
+
+.btn{
+    background-color: #007bff !important;
+    color: white;
+}
