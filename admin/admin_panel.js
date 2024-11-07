@@ -80,8 +80,9 @@ function imprimirEtiquetaQR(qrCodeData) {
     // Obtiene el nombre del código QR
     const fnMatch = qrCodeData.match(/FN:(.*)/);
     const name = fnMatch ? fnMatch[1].trim() : "Unknown";
-    const qrData = qrCodeData;
-    
+
+    const qrData = ensureNTag(qrCodeData, name);
+    console.log("qrData:", qrData);
 
     // Genera el código QR
     const qr = new QRious({
@@ -194,3 +195,42 @@ $(document).ready(function() {
         });
     });
 });
+
+function ensureNTag(vCard, fullName) {
+    // Check if vCard already has an "N:" tag
+    if (!/(\r?\n|^)N:/i.test(vCard)) {
+        console.log("No se encontró la etiqueta N: en el código QR.",fullName);
+        // Append the N: tag with provided first and last names
+        const { firstNames: nombre, lastNames: apellido } = parseFullName(fullName);
+        console.log("Nombre:",nombre);
+        console.log("Apellido:",apellido); 
+        const nTag = `N:${apellido};${nombre};;;\n`;
+        // Insert the N: tag after the "BEGIN:VCARD" line
+        vCard = vCard.replace(/(BEGIN:VCARD\r?\n)/i, `$1${nTag}`);
+    }
+    return vCard;
+}
+
+function parseFullName(fullName) {
+    // Remove extra spaces between words and trim leading/trailing whitespace
+    fullName = fullName.replace(/\s+/g, ' ').trim();
+    const nameParts = fullName.split(" ");
+
+    let firstNames, lastNames;
+    
+    if (nameParts.length >= 4) {
+        // If there are 4 or more parts, assume the first two are first names, and the last two are last names
+        firstNames = nameParts.slice(0, 2).join(" ");
+        lastNames = nameParts.slice(2).join(" ");
+    } else if (nameParts.length === 3) {
+        // If there are 3 parts, assume the first is a first name and the last two are last names
+        firstNames = nameParts[0];
+        lastNames = nameParts.slice(1).join(" ");
+    } else {
+        // For 1 or 2 parts, fall back to simpler assumptions
+        firstNames = nameParts[0];
+        lastNames = nameParts.length === 2 ? nameParts[1] : "";
+    }
+
+    return { firstNames, lastNames };
+}
